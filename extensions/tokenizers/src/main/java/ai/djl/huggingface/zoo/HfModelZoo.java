@@ -47,7 +47,7 @@ public class HfModelZoo extends ModelZoo {
 
     private static final String REPO = "https://mlrepo.djl.ai/";
     private static final Repository REPOSITORY = Repository.newInstance("Huggingface", REPO);
-    private static final String GROUP_ID = "ai.djl.huggingface.pytorch";
+    private static final String GROUP_ID = "ai.djl.huggingface.pytorch";// opensearch.org
 
     private static final long ONE_DAY = Duration.ofDays(1).toMillis();
 
@@ -88,13 +88,18 @@ public class HfModelZoo extends ModelZoo {
                 }
             }
             String artifactId = entry.getKey();
-            addModel(REPOSITORY.model(app, GROUP_ID, artifactId, "0.0.1"));
+            addModel(REPOSITORY.model(app, GROUP_ID, artifactId, "0.0.1"));// need to bump version for next release
         }
     }
 
     private Map<String, Map<String, Object>> listModels(Application app) {
         try {
-            String path = "model/" + app.getPath() + "/ai/djl/huggingface/pytorch/";
+            String path = "model/" + app.getPath() + "/ai/djl/huggingface/pytorch/"; // model/text_embedding/opensearch.org/pytorch/abc/model.json
+            /*
+            "abc": URL
+
+             */
+
             Path dir = Utils.getCacheDir().resolve("cache/repo/" + path);
             if (Files.notExists(dir)) {
                 Files.createDirectories(dir);
