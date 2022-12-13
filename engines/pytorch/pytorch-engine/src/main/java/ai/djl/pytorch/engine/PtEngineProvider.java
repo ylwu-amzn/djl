@@ -35,7 +35,7 @@ public class PtEngineProvider implements EngineProvider {
     /** {@inheritDoc} */
     @Override
     public Engine getEngine() {
-        if (engine == null) {
+        if (engine == null) {//ylwu: make this reloadable
             synchronized (this) {
                 engine = PtEngine.newInstance();
             }

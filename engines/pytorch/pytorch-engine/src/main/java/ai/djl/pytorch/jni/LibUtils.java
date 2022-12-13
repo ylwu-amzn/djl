@@ -354,6 +354,7 @@ public final class LibUtils {
                 throw new IllegalArgumentException("Invalid native_helper: " + nativeHelper, e);
             }
         }
+        System.exit(0);
         System.load(path); // NOPMD
     }
 
